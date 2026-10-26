@@ -1,6 +1,6 @@
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-
+//Menu cadastro
 data class Hospede(
     val nome: String,
     val dataCadastro: LocalDateTime
@@ -59,7 +59,7 @@ fun Cadastrar() {
         if (opcao == 'N') {
             return
         } else if (opcao != 'S') {
-            println("Opção inválida!")
+            println("Opção inválida!!!")
         }
     }
 }
@@ -143,7 +143,7 @@ fun atualizar(){
 println("Qual o nome do hospede que deseja atualizar?")
     val nomebuscado = readln()
     val indice = hospede.indexOfFirst { it.nome.equals(nomebuscado,ignoreCase = true) }
-
+        //Verifica se o nome tem um indidce
     if (indice == -1){
         println("Hóspede não encontrado.")
         return
