@@ -25,7 +25,7 @@ fun menucadastro() {
             3 -> pesquisarpref()
             4 -> listarAZ()
             5 -> atualizar()
-            /*6 -> Relatórios ()*/
+            /*6 -> removercad ()*/
             7 -> {
                 println("Voltando ao menu principal")
                 return
