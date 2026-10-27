@@ -25,7 +25,7 @@ fun menucadastro() {
             3 -> pesquisarpref()
             4 -> listarAZ()
             5 -> atualizar()
-            /*6 -> removercad ()*/
+            6 -> removercad ()
             7 -> {
                 println("Voltando ao menu principal")
                 return
@@ -139,24 +139,53 @@ fun listarAZ(){
     }
 }
 
-fun atualizar(){
-println("Qual o nome do hospede que deseja atualizar?")
-    val nomebuscado = readln()
-    val indice = hospede.indexOfFirst { it.nome.equals(nomebuscado,ignoreCase = true) }
+fun atualizar() {
+    while (true) {
+        println("Qual o nome do hospede que deseja atualizar?")
+        val nomebuscado = readln()
+        val indice = hospede.indexOfFirst { it.nome.equals(nomebuscado, ignoreCase = true) }
         //Verifica se o nome tem um indidce
-    if (indice == -1){
-        println("Hóspede não encontrado.")
-        return
-    }
-    println("Digite o novo nome:")
-    val nomeatt = readln()
-    /*
+        if (indice == -1) {
+            println("Hóspede não encontrado.")
+            return
+        }
+        println("Digite o novo nome:")
+        val nomeatt = readln()
+        /*
     hospede[indice] acessa o hóspede que encontramos na lista pelo indice
     .dataCadastro acessa a data que já estavam salvas nesse hóspede
      */
-    hospede[indice] = Hospede(
-        nome = nomeatt,
+        hospede[indice] = Hospede(
+            nome = nomeatt,
+            dataCadastro = hospede[indice].dataCadastro
+        )
+        println("Nome atualizado com sucesso!\nDeseja continuar?S/N")
+        val opcao = readln().uppercase()
+        if (opcao =="N"){
+            return
+        }
+
+    }
+}
+fun removercad(){
+    while (true){
+    println("Digite o nome do hóspede que deseja remover:")
+    val aremover = readln()
+    val indice = hospede.indexOfFirst { it.nome.equals(aremover, ignoreCase = true) }
+    if (indice == -1) {
+        println("Hóspede não encontrado:")
+        return
+    }
+    val hosremovido = Hospede(
+        nome = aremover,
         dataCadastro = hospede[indice].dataCadastro
     )
-    println("Nome atualizado com sucesso!")
+    hospede.remove(hosremovido)
+    println("${hosremovido.nome} Removido!\nDeseja continuar a remover?S/N")
+        val opcao = readln().uppercase()
+
+    if (opcao =="N"){
+        return
+         }
+    }
 }
