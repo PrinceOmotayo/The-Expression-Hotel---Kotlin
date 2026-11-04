@@ -1,10 +1,12 @@
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+
 //Menu cadastro
 data class Hospede(
     val nome: String,
     val dataCadastro: LocalDateTime
 )
+
 val hospede = mutableListOf<Hospede>()
 fun menucadastro() {
     println("$nomelogin esse é o Menu de Registro de Hóspedes. O que deseja fazer?")
@@ -25,7 +27,7 @@ fun menucadastro() {
             3 -> pesquisarpref()
             4 -> listarAZ()
             5 -> atualizar()
-            6 -> removercad ()
+            6 -> removercad()
             7 -> {
                 println("Voltando ao menu principal")
                 return
@@ -115,14 +117,14 @@ fun pesquisarpref() {
         }
         println("Deseja continuar a sua pesquisa? S/N")
         val opcao = readln().uppercase()
-        if (opcao =="N"){
+        if (opcao == "N") {
             return
         }
     }
 }
 
-fun listarAZ(){
-        println("Lista de hóspedes:")
+fun listarAZ() {
+    println("Lista de hóspedes:")
     /*
     hospede.sortedBy{it.lowercase()} cria uma lista em ordem alfabética
     e ignora diferenças entre maiúsculas e minúsculas.
@@ -131,9 +133,9 @@ fun listarAZ(){
     por isso preciso criar a variavel ordenados
     val formato = modela o tipo de data
      */
- val formato = DateTimeFormatter.ofPattern("dd/MM/yyyy  HH:mm")
- val ordenados = hospede.sortedBy{ it.nome.lowercase() }
-    ordenados.forEachIndexed {indice, hospede ->
+    val formato = DateTimeFormatter.ofPattern("dd/MM/yyyy  HH:mm")
+    val ordenados = hospede.sortedBy { it.nome.lowercase() }
+    ordenados.forEachIndexed { indice, hospede ->
         val data = hospede.dataCadastro.format(formato)
         println("[${indice + 1}]${hospede.nome} | Cadastro: $data")
     }
@@ -161,31 +163,32 @@ fun atualizar() {
         )
         println("Nome atualizado com sucesso!\nDeseja continuar?S/N")
         val opcao = readln().uppercase()
-        if (opcao =="N"){
+        if (opcao == "N") {
             return
         }
 
     }
 }
-fun removercad(){
-    while (true){
-    println("Digite o nome do hóspede que deseja remover:")
-    val aremover = readln()
-    val indice = hospede.indexOfFirst { it.nome.equals(aremover, ignoreCase = true) }
-    if (indice == -1) {
-        println("Hóspede não encontrado:")
-        return
-    }
-    val hosremovido = Hospede(
-        nome = aremover,
-        dataCadastro = hospede[indice].dataCadastro
-    )
-    hospede.remove(hosremovido)
-    println("${hosremovido.nome} Removido!\nDeseja continuar a remover?S/N")
+
+fun removercad() {
+    while (true) {
+        println("Digite o nome do hóspede que deseja remover:")
+        val aremover = readln()
+        val indice = hospede.indexOfFirst { it.nome.equals(aremover, ignoreCase = true) }
+        if (indice == -1) {
+            println("Hóspede não encontrado:")
+            return
+        }
+        val hosremovido = Hospede(
+            nome = aremover,
+            dataCadastro = hospede[indice].dataCadastro
+        )
+        hospede.remove(hosremovido)
+        println("${hosremovido.nome} Removido!\nDeseja continuar a remover?S/N")
         val opcao = readln().uppercase()
 
-    if (opcao =="N"){
-        return
-         }
+        if (opcao == "N") {
+            return
+        }
     }
 }

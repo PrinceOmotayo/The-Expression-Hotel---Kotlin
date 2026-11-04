@@ -6,6 +6,7 @@ data class Reserva (
 )
 val reservas = mutableListOf<Reserva>()
 
+
 fun reservaQuartos() {
     println("Informe o nome completo do hóspede:")
     var inputnome = readln().uppercase()

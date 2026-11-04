@@ -33,8 +33,8 @@ fun arcondicionado() {
         } else {
             0.0
         }
-
         val total = bruto - desconto + deslocamento
+
 
         orcamentos.add(
             Orcamento(
@@ -42,7 +42,6 @@ fun arcondicionado() {
                 total = total
             )
         )
-
         println("O serviço de $empresa custará R$ %.2f".format(total))
         print("Deseja informar novos dados, $nomelogin? (S/N): ")
         var opcao = readln().uppercase()

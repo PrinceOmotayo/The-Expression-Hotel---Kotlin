@@ -5,8 +5,8 @@ data class Abastecimento(
 )
 
 fun abastecimento() {
-
     println("==[Abastecimento]==")
+
 
     val tanque = 42.0
 
