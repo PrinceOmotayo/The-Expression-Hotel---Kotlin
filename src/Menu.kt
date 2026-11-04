@@ -1,3 +1,4 @@
+
 fun menu() {
     println("Bem vindo ao menu principal $nomelogin. O que deseja fazer?")
     while (true) {
@@ -15,11 +16,9 @@ fun menu() {
             1 -> reservaQuartos()
             2 -> menucadastro()
             3 -> eventos()
-            /*
             4 -> arcondicionado()
             5 -> abastecimento()
             6 -> relatorios()
-            */
             7 -> {
                 println("THE EXPRESSION MANAGE HOTEL encerrado. Até mais!")
                 break

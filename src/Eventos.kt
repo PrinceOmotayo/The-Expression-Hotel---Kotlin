@@ -1,12 +1,12 @@
-import kotlin.String
-
 data class Evento(
     val contratante: String,
     val dataevento: String,
     val horaInicio: Int,
     val duracao: Int,
     val convidados: Int,
-    val auditorio: String)
+    val auditorio: String,
+    val valordoevento: Double)
+val eventosregistrados = mutableListOf<Evento>()
 fun eventos(){
     println("-[MENU DE EVENTOS]-\n" +
             "Nosso hotel contém dois auditórios: \n" +
@@ -69,20 +69,6 @@ fun eventos(){
     println("Informe o nome do Locatário:")
     val locatario = readln()
 
-    val eventoconfirmado = Evento(
-         contratante = locatario,
-         dataevento = datafesta,
-         horaInicio = horaevento,
-         duracao = tempoevento,
-         convidados = convidadosevento,
-         auditorio = auditoriosugerido
-    )
-    println("Evento registrado:\n" +
-            "Auditório ${eventoconfirmado.auditorio}\n" +
-            "Data - ${eventoconfirmado.dataevento} às ${eventoconfirmado.horaInicio}\n" +
-            "Contratante: ${eventoconfirmado.contratante}\n" +
-            "Duração: ${eventoconfirmado.duracao}\n" +
-            "Número de convidados: ${eventoconfirmado.convidados}")
     //GARÇONS(Gs) PARA EVENTOS
 
     val baseGs = convidadosevento/12
@@ -129,10 +115,20 @@ fun eventos(){
             "Custo Buffet: R$$custobuffet \n" +
             "\n" +
             "Total do evento: R$$custoevento reais.\n ")
+    val eventoconfirmado = Evento(
+        contratante = locatario,
+        dataevento = datafesta,
+        horaInicio = horaevento,
+        duracao = tempoevento,
+        convidados = convidadosevento,
+        auditorio = auditoriosugerido,
+        valordoevento = custoevento
+    )
     println("Deseja confirmar reserva?(S/N)")
     val opcao = readln().uppercase()
     if (opcao == "S"){
         println("Reserva efetuada com sucesso.")
+        eventosregistrados.add(eventoconfirmado)
     }
 
 
